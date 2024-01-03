@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Contact_Us.module.scss';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Icon } from 'leaflet';
+
 const cx = classNames.bind(styles);
 
 const ContactLocation = () => {
@@ -40,15 +40,21 @@ const ContactLocation = () => {
             />
 
             {location ? (
-                <MapContainer center={[location.latitude, location.longitude]} zoom={18} style={{ height: '500px' }}>
-                    <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    />
-                    <Marker position={[location.latitude, location.longitude]}>
-                        <Popup>Your Location</Popup>
-                    </Marker>
-                </MapContainer>
+                <div className={cx('map-wrapper')}>
+                    <MapContainer
+                        center={[location.latitude, location.longitude]}
+                        zoom={18}
+                        style={{ height: '500px' }}
+                    >
+                        <TileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        />
+                        <Marker position={[location.latitude, location.longitude]}>
+                            <Popup>Your Location</Popup>
+                        </Marker>
+                    </MapContainer>
+                </div>
             ) : (
                 <p>{error || 'Getting location...'}</p>
             )}
