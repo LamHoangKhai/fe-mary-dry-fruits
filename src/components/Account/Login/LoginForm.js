@@ -60,7 +60,7 @@ const LoginForm = () => {
                 setErrorHeightEmail(false);
                 let res = await loginUser(email, password);
 
-                if (res && res.success === true) {
+                if (res && res.success === true && res.status !== 2) {
                     localStorage.setItem('jwt', res.response.access_token);
                     
                     navigate('/');

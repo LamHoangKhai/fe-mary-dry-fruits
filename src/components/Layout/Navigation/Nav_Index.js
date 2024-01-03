@@ -12,13 +12,13 @@ import Cart from '../Cart/Cart';
 import MenuUser from '../Menu/Menu_User';
 import MenuPage from '../Menu/Menu_Page';
 import MenuLaptop from '../Menu/Menu_Laptop';
-import { loginUser } from '@/service/User_Service';
+import { loginUser, dataUser } from '@/service/User_Service';
 
 const cx = classNames.bind(styles);
 
 function NavBarIndex() {
     const [show, setShow] = useState(false);
-    const { cartQuantity, remove, showPoper, dataName } = useShoppingContext();
+    const { cartQuantity, remove, showPoper, dataName, setDataName } = useShoppingContext();
     const [laptop, setLaptop] = useState(false);
 
     const navigate = useNavigate();
@@ -33,39 +33,16 @@ function NavBarIndex() {
         handleResize();
         window.addEventListener('resize', handleResize);
 
-        
-        //     if (!token) {
-        //        return
-        //     } else{
-        //         let loginAgain = async () => {
-        //             const res = await loginUser( );
+        const fetchData = async () => {
+            try {
+                const res = await dataUser();
+                if (res && res.success === true) {
+                    setDataName(res.response.full_name);
+                }
+            } catch (error) {}
+        };
 
-        //             if (res && res.success === true) {
-        //                 localStorage.setItem('jwt', res.response.access_token);
-
-        //                 setInterval(async () => {
-        //                     localStorage.removeItem('jwt');
-        //                     localStorage.removeItem('login');
-
-        //                     try {
-        //                         const res = await loginUser();
-        //                         if (res && res.success === true) {
-        //                             localStorage.setItem('jwt', res.response.access_token);
-        //                             localStorage.setItem('login', true);
-        //                             setCheckLogin(true);
-        //                         } else {
-        //                             navigate('/account/login');
-        //                         }
-        //                     } catch (error) {
-        //                         console.log(error);
-        //                     }
-        //                 }, 55 * 10 * 1000);
-        //             } else {
-        //                 navigate('/');
-        //             }
-        //         };
-        //         loginAgain();
-        //     }
+        fetchData();
 
         return () => {
             window.removeEventListener('resize', handleResize);
@@ -150,7 +127,12 @@ function NavBarIndex() {
                     <ul className={cx('nav-list-right')}>
                         <li className={cx('nav-item-right')}>
                             <Link to="/#" className={cx('nav-item-link')}>
-                                <input type="text" className={cx('nav-item-search')} value={'search'} placeholder="Search" />
+                                <input
+                                    type="text"
+                                    className={cx('nav-item-search')}
+                                    value={'search'}
+                                    placeholder="Search"
+                                />
                                 <div className={cx('nav-item-outner-icon')}>
                                     <Search className={cx('nav-item-icon')} />
                                 </div>
