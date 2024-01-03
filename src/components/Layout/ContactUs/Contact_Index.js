@@ -18,7 +18,7 @@ const ContactIndex = () => {
                 <div className={cx('contact-info')}>
                     <ContactItem
                         title={'Phone'}
-                        info={'Toll-Free: 0000 - 123 - 456789'}
+                        info={'Toll-Free:1800 1779'}
                         icon={
                             <FontAwesomeIcon
                                 icon={icon({ name: 'phone', style: 'solid' })}
@@ -28,7 +28,7 @@ const ContactIndex = () => {
                     />
                     <ContactItem
                         title={'Email'}
-                        info={'Mail@example.com'}
+                        info={'marudryfruits@gmail.com'}
                         icon={
                             <FontAwesomeIcon
                                 icon={icon({ name: 'envelope', style: 'solid' })}
@@ -38,7 +38,7 @@ const ContactIndex = () => {
                     />
                     <ContactItem
                         title={'Address'}
-                        info={'35/6 D5 Street Binh Thanh District'}
+                        info={'35/6 Đường D5, Phường 25, Bình Thạnh, Thành phố Hồ Chí Minh 72308'}
                         icon={
                             <FontAwesomeIcon
                                 icon={icon({ name: 'location-dot', style: 'solid' })}

@@ -183,7 +183,9 @@
                 .cart-bill-outner {
                     border-bottom: 1px solid var(--border-color);
                     padding-bottom: 10px;
-
+                    h4 {
+                        margin: 4px 0 12px;
+                    }
                     .cart-bill-detail {
                         display: flex;
                         justify-content: space-between;
@@ -191,6 +193,11 @@
 
                         .cart-bill-unit {
                             margin-left: 5px;
+                        }
+                        label {
+                            input {
+                                margin-right: 4px;
+                            }
                         }
                     }
 

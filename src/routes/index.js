@@ -24,6 +24,7 @@ const routes = [
     { path: '/product/nutritional', component: Nutritional },
     { path: '/account/profile', component: ProfilePage },
     { path: '/cart', component: ShoppingCartPage },
+    { path: '/cart/:status', component: ShoppingCartPage },
 ];
 
 export default routes;

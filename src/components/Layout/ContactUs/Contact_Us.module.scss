@@ -26,6 +26,11 @@
         }
     }
 }
+.leaflet-container {
+    width: 50%;
+    height: 100vh;
+    margin-right: 12px;
+}
 
 //CSS Contact Item
 .contact-item-container {
@@ -82,7 +87,7 @@
 }
 
 //CSS Google Map
-.contact-map{
+.contact-map {
     width: 60%;
     margin-right: 40px;
 
@@ -103,7 +108,10 @@
         height: 100%;
         width: 100%;
         margin-bottom: 30px;
-
+        .errors {
+            color: red;
+            padding: 0 12px;
+        }
         .contact-form-input {
             width: 100%;
             height: 50px;
@@ -111,16 +119,17 @@
             border: none;
             border: 2px solid var(--border-color);
             padding: 0 20px;
+            margin-bottom: 8px;
             font-size: 1.8rem;
             &::placeholder {
                 font-size: 1.6rem;
             }
-            &:focus{
+            &:focus {
                 border-color: var(--primary-color);
             }
         }
 
-        .contact-form-textarea{
+        .contact-form-textarea {
             width: 100%;
             height: 200px;
             border-radius: 20px;
@@ -131,16 +140,16 @@
             &::placeholder {
                 font-size: 1.8rem;
             }
-            &:focus{
+            &:focus {
                 border-color: var(--primary-color);
             }
         }
     }
-    
-    .contact-form-btn{
-       display: flex;
-       justify-content: end;
-       width: 100%;
-       margin-left: 15px;
+
+    .contact-form-btn {
+        display: flex;
+        justify-content: end;
+        width: 100%;
+        margin-left: 15px;
     }
 }

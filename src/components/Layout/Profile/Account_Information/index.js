@@ -75,6 +75,13 @@ const AccountInformation = () => {
         }
     };
 
+    const handleCheckPhone = (value) => {
+        const cleanedNumber = value.replace(/[^\d+]/g, '');
+        if (cleanedNumber.length <= 15) {
+            setNewPhone(cleanedNumber);
+        }
+    };
+
     const handleImageError = () => {
         setIsImageError(true);
     };
@@ -94,7 +101,7 @@ const AccountInformation = () => {
             setErrorName(false);
         }
 
-        if (!newPhone || newPhone.length > 10 || newPhone.length < 10 || isNaN(newPhone) === true) {
+        if (!newPhone || !(newPhone.length >= 10 && newPhone.length <= 15) || isNaN(newPhone) === true) {
             setErrorPhone('Please do not leave blank and your phone number must be valid.');
             toast.error('Update Profile Failed', {
                 transition: Flip,
@@ -116,7 +123,6 @@ const AccountInformation = () => {
             setErrorAddress(false);
         }
 
-       
         if (!errorAddress && !errorPhone && !errorName) {
             try {
                 const res = await editDataUser(newFullName, newPhone, newAddress);
@@ -168,7 +174,7 @@ const AccountInformation = () => {
                                     type="text"
                                     className={cx('profile-detail-input')}
                                     value={newFullName}
-                                    onChange={(e)=>setNewFullName(e.target.value)}
+                                    onChange={(e) => setNewFullName(e.target.value)}
                                 />
                             </div>
 
@@ -216,7 +222,7 @@ const AccountInformation = () => {
                                 {phone ? (
                                     <input
                                         value={newPhone}
-                                        onChange={(e) => setNewPhone(e.target.value)}
+                                        onChange={(e) => handleCheckPhone(e.target.value)}
                                         className={cx('profile-detail-change')}
                                     />
                                 ) : (
@@ -272,11 +278,11 @@ const AccountInformation = () => {
                             <div className={cx('profile-detail-outner-pass')}>
                                 <div className={cx('profile-detail-pass')}>
                                     <label htmlFor="Fullname">New Password</label>
-                                    <input id="Fullname"  type="text" className={cx('profile-detail-input')} />
+                                    <input id="Fullname" type="text" className={cx('profile-detail-input')} />
                                 </div>
                                 <div className={cx('profile-detail-pass')}>
                                     <label htmlFor="Fullname">Confirm Password</label>
-                                    <input id="Fullname"  type="text" className={cx('profile-detail-input')} />
+                                    <input id="Fullname" type="text" className={cx('profile-detail-input')} />
                                 </div>
                                 <span onClick={() => setUpdatePass(false)}>
                                     <Button text={'Change'} blackText />
